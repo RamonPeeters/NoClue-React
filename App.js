@@ -1,10 +1,10 @@
 import React from 'react';
-import StartScreen from './components/StartScreen';
+import Screen from './components/Screen';
 
 const App = () => {
     return (
         <>
-            <StartScreen></StartScreen>
+            <Screen part="startMenu"></Screen>
         </>
     );
 };

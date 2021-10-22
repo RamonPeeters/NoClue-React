@@ -5,12 +5,16 @@ import CreateLobby from './CreateLobby';
 import JoinLobby from './JoinLobby';
 
 export default class StartScreen extends Component {
+    constructor(props) {
+        super(props);
+    }
+
     render() {
         return (
             <View style={STYLES.container}>
                 <GameLogo style={STYLES.logoContainer}></GameLogo>
                 <View style={STYLES.lobbyContainer}>
-                    <CreateLobby style={[STYLES.lobbyItem, { height: "45%" }]}></CreateLobby>
+                    <CreateLobby onConfirm={this.props.createLobby} style={[STYLES.lobbyItem, { height: "45%" }]}></CreateLobby>
                     <JoinLobby style={STYLES.lobbyItem}></JoinLobby>
                 </View>
             </View>
