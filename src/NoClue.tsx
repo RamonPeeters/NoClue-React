@@ -1,9 +1,8 @@
 import Handler from "./protocol/Handler";
 import Reader from "./protocol/Reader";
-import Screen from "../components/Screen";
+import Screen from "./components/Screen";
 import React, { ReactNode } from "react";
-import { View, Text } from "react-native";
-import GameSettingsScreen from "../components/GameSettingsScreen";
+import GameSettingsScreen from "./components/GameSettingsScreen";
 
 export default class NoClue {
     private static instance: NoClue;
