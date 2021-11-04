@@ -1,48 +1,27 @@
-import React, { Component } from 'react';
-import { View, Text } from 'react-native';
-import Handler from '../src/protocol/Handler';
-import Reader from '../src/protocol/Reader';
+import React, { Component, ReactNode } from 'react';
 import StartScreen from './StartScreen';
 
-export default class Screen extends Component {
-    private handler: Handler = null;
-    state = { activeDisplay: null };
+interface Props {}
 
-    constructor(props: any) {
+interface State {
+    activeDisplay: ReactNode
+}
+
+export default class Screen extends Component<Props, State> {
+    constructor(props: Props) {
         super(props);
-        this.setDefaultScreen();
+        this.state = {
+            activeDisplay: <StartScreen />
+        }
     }
 
-    public render(): Component {
+    public render(): ReactNode {
         return this.state.activeDisplay;
     }
 
-    private setDefaultScreen(): void {
-        this.state.activeDisplay = <StartScreen createLobby={() => this.createLobby()} />;
-    }
-
-    private createLobby() {
-        this.handler = new Handler(new WebSocket("ws://localhost:19772/game"), (reader) => this.receiveMessage(reader));
-    }
-
-    private receiveMessage(reader: Reader) {
-        let id = reader.readInt();
-        if (id === 1) {
-            this.lobbyCreated(reader);
-        }
-        if (id === 2) {
-            console.log("JOIN THE LOBBY");
-        }
-    }
-
-    private lobbyCreated(reader: Reader): void {
-        if (reader.readBoolean()) {
-            let code = reader.readInt();
-            this.setState({
-                activeDisplay: <View><Text>{code}</Text></View>
-            });
-        } else {
-            console.log("was not able to create a lobby");
-        }
+    public setActiveDisplay(display: ReactNode) {
+        this.setState({
+            activeDisplay: display
+        });
     }
 }

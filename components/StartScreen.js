@@ -3,6 +3,7 @@ import { StyleSheet, View } from 'react-native';
 import GameLogo from './GameLogo';
 import CreateLobby from './CreateLobby';
 import JoinLobby from './JoinLobby';
+import NoClue from '../src/NoClue';
 
 export default class StartScreen extends Component {
     constructor(props) {
@@ -14,11 +15,15 @@ export default class StartScreen extends Component {
             <View style={STYLES.container}>
                 <GameLogo style={STYLES.logoContainer}></GameLogo>
                 <View style={STYLES.lobbyContainer}>
-                    <CreateLobby onConfirm={this.props.createLobby} style={[STYLES.lobbyItem, { height: "45%" }]}></CreateLobby>
+                    <CreateLobby onConfirm={() => this.createLobby()} style={[STYLES.lobbyItem, { height: "45%" }]}></CreateLobby>
                     <JoinLobby style={STYLES.lobbyItem}></JoinLobby>
                 </View>
             </View>
         );
+    }
+
+    createLobby() {
+        NoClue.getInstance().createLobby();
     }
 }
 

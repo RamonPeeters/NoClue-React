@@ -1,10 +1,11 @@
 import React from 'react';
-import Screen from './components/Screen';
+import NoClue from './src/NoClue';
 
 const App = () => {
+    let noClue = new NoClue();
     return (
         <>
-            <Screen part="startMenu"></Screen>
+            {noClue.getScreen()}
         </>
     );
 };
