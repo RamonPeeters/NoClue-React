@@ -27,10 +27,10 @@ export default class NoClue {
 
     private receiveMessage(reader: Reader) {
         let id: number = reader.readInt();
-        if (id == 1) {
+        if (id == 0) {
             this.lobbyCreated(reader);
         }
-        if (id == 2) {
+        if (id == 1) {
             console.log("JOIN THE LOBBY");
         }
     }
