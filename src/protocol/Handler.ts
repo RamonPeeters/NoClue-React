@@ -36,4 +36,8 @@ export default class Handler {
         console.log("CLOSE");
         console.log(e.code, e.reason);
     }
+
+    public sendMessage(message: Uint8Array): void {
+        this.socket.send(message.buffer);
+    }
 }

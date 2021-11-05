@@ -3,6 +3,7 @@ import Reader from "./protocol/Reader";
 import Screen from "./components/Screen";
 import React, { ReactNode } from "react";
 import GameSettingsScreen from "./components/GameSettingsScreen";
+import GameBoardScreen from "./components/GameBoardScreen";
 
 export default class NoClue {
     private static instance: NoClue;
@@ -21,17 +22,22 @@ export default class NoClue {
         return <Screen ref={screen => this.screen = screen} />;
     }
 
+    public getConnectionHandler(): Handler {
+        return this.connectionHandler;
+    }
+
     public createLobby(): void {
         this.connectionHandler = new Handler(new WebSocket("ws://localhost:19772/game"), (reader) => this.receiveMessage(reader));
     }
 
     private receiveMessage(reader: Reader) {
         let id: number = reader.readInt();
+        console.log("Received ID:", id);
         if (id == 0) {
             this.lobbyCreated(reader);
         }
-        if (id == 1) {
-            console.log("JOIN THE LOBBY");
+        if (id == 5) {
+            this.gameStarted();
         }
     }
 
@@ -44,5 +50,9 @@ export default class NoClue {
         } else {
             console.log("was not able to create a lobby");
         }
+    }
+
+    private gameStarted(): void {
+        this.screen.setActiveDisplay(<GameBoardScreen/>);
     }
 }
