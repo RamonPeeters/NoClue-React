@@ -5,7 +5,7 @@
     <CppWinRTOptimized>true</CppWinRTOptimized>
     <CppWinRTRootNamespaceAutoMerge>true</CppWinRTRootNamespaceAutoMerge>
     <MinimalCoreWin>true</MinimalCoreWin>
-    <ProjectGuid>{9a4f3ba3-9b57-4bdc-98cc-7e386d767656}</ProjectGuid>
+    <ProjectGuid>{59610d76-9512-4f62-81be-0c687b6350c5}</ProjectGuid>
     <ProjectName>nocluereact</ProjectName>
     <RootNamespace>nocluereact</RootNamespace>
     <DefaultLanguage>en-US</DefaultLanguage>
@@ -16,7 +16,7 @@
     <WindowsTargetPlatformVersion Condition=" '$(WindowsTargetPlatformVersion)' == '' ">10.0.18362.0</WindowsTargetPlatformVersion>
     <WindowsTargetPlatformMinVersion>10.0.16299.0</WindowsTargetPlatformMinVersion>
     <PackageCertificateKeyFile>nocluereact_TemporaryKey.pfx</PackageCertificateKeyFile>
-    <PackageCertificateThumbprint>B2B3D01763E160EB178CBA212FCDFFBB486E04EA</PackageCertificateThumbprint>
+    <PackageCertificateThumbprint>19A4044B24F523B930073A0A66A5F858F64F1E55</PackageCertificateThumbprint>
     <PackageCertificatePassword>password</PackageCertificatePassword>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />

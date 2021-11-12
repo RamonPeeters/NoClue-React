@@ -21,6 +21,6 @@ export default class GameSettingsScreen extends Component<Props, State> {
 
     private startGame(): void {
         let connectionHandler: Handler = NoClue.getInstance().getConnectionHandler();
-        connectionHandler.sendMessage(new Uint8Array([0, 0, 0, 3]));
+        connectionHandler.sendMessage(new Uint8Array([0, 0, 0, 2]));
     }
 }

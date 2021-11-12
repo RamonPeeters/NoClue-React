@@ -36,8 +36,11 @@ export default class NoClue {
         if (id == 0) {
             this.lobbyCreated(reader);
         }
-        if (id == 5) {
+        if (id == 4) {
             this.gameStarted();
+        }
+        if (id == 5) {
+            this.readCard(reader);
         }
     }
 
@@ -54,5 +57,9 @@ export default class NoClue {
 
     private gameStarted(): void {
         this.screen.setActiveDisplay(<GameBoardScreen/>);
+    }
+
+    private readCard(reader: Reader): void {
+        console.log(`Card Type: ${reader.readInt()}, Card Value: ${reader.readInt()}`);
     }
 }
