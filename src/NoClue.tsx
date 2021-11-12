@@ -42,6 +42,12 @@ export default class NoClue {
         if (id == 5) {
             this.readCard(reader);
         }
+        if (id == 6) {
+            this.allowDice();
+        }
+        if (id == 8) {
+            this.showDiceRoll(reader);
+        }
     }
 
     private lobbyCreated(reader: Reader): void {
@@ -61,5 +67,13 @@ export default class NoClue {
 
     private readCard(reader: Reader): void {
         console.log(`Card Type: ${reader.readInt()}, Card Value: ${reader.readInt()}`);
+    }
+
+    private allowDice(): void {
+        console.log("Allow dice to be rolled");
+    }
+
+    private showDiceRoll(reader: Reader): void {
+        console.log(`First Roll: ${reader.readInt()}, Second Roll: ${reader.readInt()}`);
     }
 }
