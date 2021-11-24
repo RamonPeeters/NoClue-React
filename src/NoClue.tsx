@@ -4,10 +4,13 @@ import Screen from "./components/Screen";
 import React, { ReactNode } from "react";
 import GameSettingsScreen from "./components/GameSettingsScreen";
 import GameBoardScreen from "./components/GameBoardScreen";
+import Card from "./cards/Card";
+import CardType from "./cards/CardType";
 
 export default class NoClue {
     private static instance: NoClue;
     private screen: Screen;
+    private gameBoardScreen: GameBoardScreen;
     private connectionHandler: Handler = null;
     private playerId: number;
 
@@ -64,11 +67,12 @@ export default class NoClue {
     }
 
     private gameStarted(): void {
-        this.screen.setActiveDisplay(<GameBoardScreen/>);
+        this.screen.setActiveDisplay(<GameBoardScreen ref={(gameBoardScreen => this.gameBoardScreen = gameBoardScreen)} />);
     }
 
     private readCard(reader: Reader): void {
-        console.log(`Card Type: ${reader.readInt()}, Card Value: ${reader.readInt()}`);
+        let card: Card = new Card(reader.readInt(), reader.readInt());
+        this.gameBoardScreen.addCard(card);
     }
 
     private allowDice(): void {

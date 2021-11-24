@@ -1,10 +1,14 @@
 import React, { Component, ReactNode } from "react";
 import { Button, StyleSheet, View } from "react-native";
+import Card from "../cards/Card";
 import NoClue from "../NoClue";
 import Handler from "../protocol/Handler";
 import Board from "./Board";
+import CardCollection from "./CardCollection";
 
 export default class GameBoardScreen extends Component {
+    private cardCollection: CardCollection;
+
     public render(): ReactNode {
         return (
             <View style={STYLES.container}>
@@ -12,8 +16,13 @@ export default class GameBoardScreen extends Component {
                 <View style={STYLES.boardContainer}>
                     <Board></Board>
                 </View>
+                <CardCollection ref={(cardCollection) => this.cardCollection = cardCollection}></CardCollection>
             </View>
         )
+    }
+
+    public addCard(card: Card): void {
+        this.cardCollection.addCard(card);
     }
 
     private rollDice(): void {
