@@ -9,6 +9,7 @@ export default class NoClue {
     private static instance: NoClue;
     private screen: Screen;
     private connectionHandler: Handler = null;
+    private playerId: number;
 
     public constructor() {
         NoClue.instance = this;
@@ -56,6 +57,7 @@ export default class NoClue {
             this.screen.setActiveDisplay((
                 <GameSettingsScreen code={code}></GameSettingsScreen>
             ));
+            this.playerId = reader.readInt();
         } else {
             console.log("was not able to create a lobby");
         }
