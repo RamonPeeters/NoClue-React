@@ -3,7 +3,7 @@ import { Button, StyleSheet, View } from "react-native";
 import Card from "../cards/Card";
 import NoClue from "../NoClue";
 import Handler from "../protocol/Handler";
-import Board from "./Board";
+import BoardComponent from "./BoardComponent";
 import CardCollection from "./CardCollection";
 
 export default class GameBoardScreen extends Component {
@@ -14,7 +14,7 @@ export default class GameBoardScreen extends Component {
             <View style={STYLES.container}>
                 <Button onPress={() => this.rollDice()} title="Roll dice"></Button>
                 <View style={STYLES.boardContainer}>
-                    <Board></Board>
+                    <BoardComponent></BoardComponent>
                 </View>
                 <CardCollection ref={(cardCollection) => this.cardCollection = cardCollection}></CardCollection>
             </View>

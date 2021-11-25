@@ -5,12 +5,13 @@ import React, { ReactNode } from "react";
 import GameSettingsScreen from "./components/GameSettingsScreen";
 import GameBoardScreen from "./components/GameBoardScreen";
 import Card from "./cards/Card";
-import CardType from "./cards/CardType";
+import Board from "./boards/Board";
 
 export default class NoClue {
     private static instance: NoClue;
     private screen: Screen;
     private gameBoardScreen: GameBoardScreen;
+    private board: Board = new Board();
     private connectionHandler: Handler = null;
     private playerId: number;
 
@@ -28,6 +29,10 @@ export default class NoClue {
 
     public getConnectionHandler(): Handler {
         return this.connectionHandler;
+    }
+
+    public getBoard(): Board {
+        return this.board;
     }
 
     public createLobby(): void {
