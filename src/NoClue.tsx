@@ -78,6 +78,9 @@ export default class NoClue {
         if (id == 11) {
             this.disableCellSelection(reader);
         }
+        if (id == 12) {
+            this.highlightSelectedSpace(reader);
+        }
     }
 
     private lobbyCreated(reader: Reader): void {
@@ -124,5 +127,11 @@ export default class NoClue {
             this.board.hideAll();
             this.boardscreen.refresh();
         }
+    }
+
+    private highlightSelectedSpace(reader: Reader): void {
+        let x: number = reader.readInt();
+        let y: number = reader.readInt();
+        this.board.get(x, y).blink();
     }
 }
