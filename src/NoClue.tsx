@@ -81,6 +81,9 @@ export default class NoClue {
         if (id == 12) {
             this.highlightSelectedSpace(reader);
         }
+        if (id == 13) {
+            this.movePlayerToSpace(reader);
+        }
     }
 
     private lobbyCreated(reader: Reader): void {
@@ -133,5 +136,9 @@ export default class NoClue {
         let x: number = reader.readInt();
         let y: number = reader.readInt();
         this.board.get(x, y).blink();
+    }
+
+    private movePlayerToSpace(reader: Reader): void {
+        this.connectionHandler.sendMessage(new Uint8Array([0, 0, 0, 14]));
     }
 }
