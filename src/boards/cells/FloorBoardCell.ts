@@ -13,6 +13,10 @@ export default class FloorBoardCell extends BoardCell {
         this.highlighted = true;
     }
 
+    public hide(): void {
+        this.highlighted = false;
+    }
+
     public isAccessible(): boolean {
         return this.highlighted;
     }

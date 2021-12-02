@@ -32,6 +32,12 @@ export default class Board {
         return this.cells;
     }
 
+    public hideAll(): void {
+        for (let i: number = 0; i < this.cells.length; i++) {
+            this.cells[i].hide();
+        }
+    }
+
     public isValidPosition(position: BoardPosition): boolean {
         if (!this.isInBounds(position.getX(), position.getY())) {
             return false;

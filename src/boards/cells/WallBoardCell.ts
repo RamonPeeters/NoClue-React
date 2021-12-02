@@ -6,6 +6,7 @@ export default class WallBoardCell extends BoardCell {
     }
 
     public highlight(): void {}
+    public hide(): void {}
 
     public isAccessible(): boolean {
         return false;
