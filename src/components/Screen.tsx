@@ -19,6 +19,10 @@ export default class Screen extends Component<Props, State> {
         return this.state.activeDisplay;
     }
 
+    public refresh(): void {
+        this.setState({});
+    }
+
     public setActiveDisplay(display: ReactNode) {
         this.setState({
             activeDisplay: display

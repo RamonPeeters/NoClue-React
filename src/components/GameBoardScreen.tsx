@@ -5,6 +5,7 @@ import NoClue from "../NoClue";
 import Handler from "../protocol/Handler";
 import BoardComponent from "./BoardComponent";
 import CardCollection from "./CardCollection";
+import MenuBarComponent from "./MenuBarComponent";
 
 export default class GameBoardScreen extends Component {
     private cardCollection: CardCollection;
@@ -12,9 +13,10 @@ export default class GameBoardScreen extends Component {
     public render(): ReactNode {
         return (
             <View style={STYLES.container}>
+                <MenuBarComponent></MenuBarComponent>
                 <Button onPress={() => this.rollDice()} title="Roll dice"></Button>
                 <View style={STYLES.boardContainer}>
-                    <BoardComponent></BoardComponent>
+                    <BoardComponent ref={(board) => NoClue.getInstance().setBoardScreen(board)}></BoardComponent>
                 </View>
                 <CardCollection ref={(cardCollection) => this.cardCollection = cardCollection}></CardCollection>
             </View>

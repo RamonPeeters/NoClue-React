@@ -1,3 +1,4 @@
+import BoardPosition from "./BoardPosition";
 import BoardCell from "./cells/BoardCell";
 import FloorBoardCell from "./cells/FloorBoardCell";
 import WallBoardCell from "./cells/WallBoardCell";
@@ -29,6 +30,13 @@ export default class Board {
 
     public getCells(): BoardCell[] {
         return this.cells;
+    }
+
+    public isValidPosition(position: BoardPosition): boolean {
+        if (!this.isInBounds(position.getX(), position.getY())) {
+            return false;
+        }
+        return this.get(position.getX(), position.getY()).isAccessible();
     }
 
     private isInBounds(x: number, y: number): boolean {
