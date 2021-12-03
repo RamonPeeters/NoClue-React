@@ -1,3 +1,4 @@
+import BoardComponent from "../components/BoardComponent";
 import BoardPosition from "./BoardPosition";
 import BoardCell from "./cells/BoardCell";
 import FloorBoardCell from "./cells/FloorBoardCell";
@@ -7,18 +8,18 @@ export default class Board {
     private static readonly WIDTH: number = 12;
     private static readonly HEIGHT: number = 12;
     private readonly cells: BoardCell[] = [
-        new WallBoardCell(), new WallBoardCell(), new WallBoardCell(), new WallBoardCell(), new WallBoardCell(), new WallBoardCell(), new WallBoardCell(), new WallBoardCell(), new WallBoardCell(), new WallBoardCell(), new WallBoardCell(), new WallBoardCell(), 
-        new WallBoardCell(), new WallBoardCell(), new WallBoardCell(), new WallBoardCell(), new WallBoardCell(), new WallBoardCell(), new WallBoardCell(), new WallBoardCell(), new FloorBoardCell(), new FloorBoardCell(), new WallBoardCell(), new WallBoardCell(), 
+        new WallBoardCell(), new WallBoardCell(), new WallBoardCell(), new WallBoardCell(), new WallBoardCell(), new WallBoardCell(), new WallBoardCell(), new WallBoardCell(), new WallBoardCell(), new FloorBoardCell(), new WallBoardCell(), new WallBoardCell(), 
+        new WallBoardCell(), new WallBoardCell(), new FloorBoardCell(), new WallBoardCell(), new FloorBoardCell(), new WallBoardCell(), new FloorBoardCell(), new WallBoardCell(), new FloorBoardCell(), new FloorBoardCell(), new WallBoardCell(), new WallBoardCell(), 
         new FloorBoardCell(), new FloorBoardCell(), new FloorBoardCell(), new FloorBoardCell(), new FloorBoardCell(), new FloorBoardCell(), new FloorBoardCell(), new FloorBoardCell(), new FloorBoardCell(), new FloorBoardCell(), new WallBoardCell(), new WallBoardCell(), 
         new FloorBoardCell(), new FloorBoardCell(), new FloorBoardCell(), new FloorBoardCell(), new FloorBoardCell(), new FloorBoardCell(), new FloorBoardCell(), new FloorBoardCell(), new FloorBoardCell(), new FloorBoardCell(), new WallBoardCell(), new WallBoardCell(), 
-        new WallBoardCell(), new FloorBoardCell(), new FloorBoardCell(), new FloorBoardCell(), new WallBoardCell(), new WallBoardCell(), new WallBoardCell(), new FloorBoardCell(), new FloorBoardCell(), new FloorBoardCell(), new WallBoardCell(), new WallBoardCell(), 
+        new FloorBoardCell(), new FloorBoardCell(), new FloorBoardCell(), new FloorBoardCell(), new WallBoardCell(), new WallBoardCell(), new WallBoardCell(), new FloorBoardCell(), new FloorBoardCell(), new FloorBoardCell(), new WallBoardCell(), new FloorBoardCell(), 
         new WallBoardCell(), new FloorBoardCell(), new FloorBoardCell(), new FloorBoardCell(), new WallBoardCell(), new WallBoardCell(), new WallBoardCell(), new FloorBoardCell(), new FloorBoardCell(), new FloorBoardCell(), new FloorBoardCell(), new FloorBoardCell(), 
         new WallBoardCell(), new FloorBoardCell(), new FloorBoardCell(), new FloorBoardCell(), new WallBoardCell(), new WallBoardCell(), new WallBoardCell(), new FloorBoardCell(), new FloorBoardCell(), new FloorBoardCell(), new FloorBoardCell(), new FloorBoardCell(), 
         new WallBoardCell(), new FloorBoardCell(), new FloorBoardCell(), new FloorBoardCell(), new WallBoardCell(), new WallBoardCell(), new WallBoardCell(), new FloorBoardCell(), new FloorBoardCell(), new FloorBoardCell(), new WallBoardCell(), new WallBoardCell(), 
-        new WallBoardCell(), new FloorBoardCell(), new FloorBoardCell(), new FloorBoardCell(), new FloorBoardCell(), new FloorBoardCell(), new FloorBoardCell(), new FloorBoardCell(), new FloorBoardCell(), new FloorBoardCell(), new WallBoardCell(), new WallBoardCell(), 
-        new WallBoardCell(), new FloorBoardCell(), new FloorBoardCell(), new FloorBoardCell(), new FloorBoardCell(), new FloorBoardCell(), new FloorBoardCell(), new FloorBoardCell(), new FloorBoardCell(), new FloorBoardCell(), new WallBoardCell(), new WallBoardCell(), 
-        new WallBoardCell(), new WallBoardCell(), new WallBoardCell(), new WallBoardCell(), new WallBoardCell(), new WallBoardCell(), new WallBoardCell(), new WallBoardCell(), new FloorBoardCell(), new FloorBoardCell(), new WallBoardCell(), new WallBoardCell(), 
-        new WallBoardCell(), new WallBoardCell(), new WallBoardCell(), new WallBoardCell(), new WallBoardCell(), new WallBoardCell(), new WallBoardCell(), new WallBoardCell(), new WallBoardCell(), new WallBoardCell(), new WallBoardCell(), new WallBoardCell()
+        new FloorBoardCell(), new FloorBoardCell(), new FloorBoardCell(), new FloorBoardCell(), new FloorBoardCell(), new FloorBoardCell(), new FloorBoardCell(), new FloorBoardCell(), new FloorBoardCell(), new FloorBoardCell(), new WallBoardCell(), new WallBoardCell(), 
+        new WallBoardCell(), new FloorBoardCell(), new FloorBoardCell(), new FloorBoardCell(), new FloorBoardCell(), new FloorBoardCell(), new FloorBoardCell(), new FloorBoardCell(), new FloorBoardCell(), new FloorBoardCell(), new FloorBoardCell(), new WallBoardCell(), 
+        new WallBoardCell(), new FloorBoardCell(), new WallBoardCell(), new WallBoardCell(), new FloorBoardCell(), new FloorBoardCell(), new FloorBoardCell(), new WallBoardCell(), new FloorBoardCell(), new FloorBoardCell(), new WallBoardCell(), new WallBoardCell(), 
+        new WallBoardCell(), new WallBoardCell(), new WallBoardCell(), new WallBoardCell(), new WallBoardCell(), new WallBoardCell(), new WallBoardCell(), new WallBoardCell(), new FloorBoardCell(), new WallBoardCell(), new WallBoardCell(), new WallBoardCell()
     ];
 
     public get(x: number, y: number): BoardCell {
