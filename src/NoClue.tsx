@@ -8,6 +8,8 @@ import Card from "./cards/Card";
 import Board from "./boards/Board";
 import BoardComponent from "./components/BoardComponent";
 import BoardPosition from "./boards/BoardPosition";
+import CardSelectionScreen from "./components/CardSelectionScreen";
+import StartScreen from "./components/StartScreen";
 
 export default class NoClue {
     private static instance: NoClue;
@@ -27,7 +29,7 @@ export default class NoClue {
     }
 
     public getScreen(): ReactNode {
-        return <Screen ref={screen => this.screen = screen} />;
+        return <Screen defaultDisplay={<StartScreen />} ref={screen => this.screen = screen} />;
     }
 
     public setBoardScreen(board: BoardComponent): void {
@@ -84,6 +86,9 @@ export default class NoClue {
         if (id == 13) {
             this.movePlayerToSpace(reader);
         }
+        if (id == 16) {
+            this.showCardScreen(reader);
+        }
     }
 
     private lobbyCreated(reader: Reader): void {
@@ -99,7 +104,12 @@ export default class NoClue {
     }
 
     private gameStarted(): void {
-        this.screen.setActiveDisplay(<GameBoardScreen ref={(gameBoardScreen => this.gameBoardScreen = gameBoardScreen)} />);
+        this.screen.setActiveDisplay(<GameBoardScreen board={this.board} ref={(gameBoardScreen => this.gameBoardScreen = gameBoardScreen)} />);
+    }
+
+    private showCardScreen(reader: Reader): void {
+        let roomType: number = reader.readInt();
+        this.gameBoardScreen.enableCardSelectionScreen(roomType);
     }
 
     private readCard(reader: Reader): void {
