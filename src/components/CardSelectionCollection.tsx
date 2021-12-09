@@ -1,11 +1,12 @@
 import React, { Component, ReactNode } from "react";
-import { FlatList, Image, ImageURISource, Pressable, StyleSheet, View } from "react-native";
+import { FlatList, Image, Pressable, StyleSheet, View } from "react-native";
+import Card from "../cards/Card";
 import FancyText from "./FancyText";
 
 interface Props {
-    items: ImageURISource[];
+    items: Card[];
     title: string;
-    onPress(image: ImageURISource): void;
+    onPress(card: Card): void;
 }
 
 interface State {}
@@ -24,7 +25,7 @@ export default class CardSelectionCollection extends Component<Props, State> {
                     renderItem={(pair) => {
                         return (
                             <Pressable onPress={() => {this.props.onPress(pair.item)}}>
-                                <Image style={STYLES.image} source={pair.item}></Image>
+                                <Image style={STYLES.image} source={pair.item.getImageSource()}></Image>
                             </Pressable>
                         );
                     }}

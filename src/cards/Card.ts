@@ -1,12 +1,15 @@
+import { ImageURISource } from "react-native";
 import CardType from "./CardType";
 
-export default class Card {
+export default abstract class Card {
     private readonly cardType: CardType;
     private readonly cardValue: number;
+    private readonly image: ImageURISource;
 
-    public constructor(cardType: CardType, cardValue: number) {
+    protected constructor(cardType: CardType, cardValue: number, image: ImageURISource) {
         this.cardType = cardType;
         this.cardValue = cardValue;
+        this.image = image;
     }
 
     public getCardType(): CardType {
@@ -15,5 +18,9 @@ export default class Card {
 
     public getCardValue(): number {
         return this.cardValue;
+    }
+
+    public getImageSource(): ImageURISource {
+        return this.image;
     }
 }

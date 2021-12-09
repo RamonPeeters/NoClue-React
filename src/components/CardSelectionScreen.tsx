@@ -1,5 +1,7 @@
 import React, { Component, ReactNode } from "react";
-import { FlatList, Image, ImageURISource, StyleSheet, Text, TouchableWithoutFeedback, View } from "react-native";
+import { Image, ImageURISource, StyleSheet, View } from "react-native";
+import Card from "../cards/Card";
+import SuspectCard from "../cards/SuspectCard";
 import CardSelectionCollection from "./CardSelectionCollection";
 import FancyButton from "./FancyButton";
 import FancyTitle from "./FancyTitle";
@@ -11,22 +13,13 @@ interface Props {
 interface State {}
 
 export default class CardSelectionScreen extends Component<Props, State> {
-    private static readonly IMAGES: ImageURISource[] = [
-        require("../assets/cards/suspects/red.png"),
-        require("../assets/cards/suspects/green.png"),
-        require("../assets/cards/suspects/yellow.png"),
-        require("../assets/cards/suspects/purple.png"),
-        require("../assets/cards/suspects/cyan.png"),
-        require("../assets/cards/suspects/white.png")
-    ]
-
     public render(): ReactNode {
         return (
             <View style={STYLES.container}>
                 <FancyTitle text={"Choose..."}></FancyTitle>
                 <View style={STYLES.cardContainer}>
-                    <CardSelectionCollection title={"Suspect"} items={CardSelectionScreen.IMAGES} onPress={(card) => this.selectSuspect(card)}></CardSelectionCollection>
-                    <CardSelectionCollection title={"Weapon"} items={CardSelectionScreen.IMAGES} onPress={(card) => this.selectSuspect(card)}></CardSelectionCollection>
+                    <CardSelectionCollection title={"Suspect"} items={SuspectCard.getValues()} onPress={(card) => this.selectSuspect(card)}></CardSelectionCollection>
+                    <CardSelectionCollection title={"Weapon"} items={SuspectCard.getValues()} onPress={(card) => this.selectSuspect(card)}></CardSelectionCollection>
                 </View>
                 <View style={STYLES.displayCardContainer}>
                     <Image style={STYLES.image} source={this.image}></Image>
@@ -42,8 +35,8 @@ export default class CardSelectionScreen extends Component<Props, State> {
 
     private image: ImageURISource = require("../assets/cards/card.png");
 
-    private selectSuspect(image: ImageURISource): void {
-        this.image = image;
+    private selectSuspect(card: Card): void {
+        this.image = card.getImageSource();
         this.setState({});
     }
 }
