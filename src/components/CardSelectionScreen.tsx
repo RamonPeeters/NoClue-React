@@ -2,6 +2,7 @@ import React, { Component, ReactNode } from "react";
 import { Image, ImageURISource, StyleSheet, View } from "react-native";
 import Card from "../cards/Card";
 import SuspectCard from "../cards/SuspectCard";
+import WeaponCard from "../cards/WeaponCard";
 import CardSelectionCollection from "./CardSelectionCollection";
 import FancyButton from "./FancyButton";
 import FancyTitle from "./FancyTitle";
@@ -19,12 +20,12 @@ export default class CardSelectionScreen extends Component<Props, State> {
                 <FancyTitle text={"Choose..."}></FancyTitle>
                 <View style={STYLES.cardContainer}>
                     <CardSelectionCollection title={"Suspect"} items={SuspectCard.getValues()} onPress={(card) => this.selectSuspect(card)}></CardSelectionCollection>
-                    <CardSelectionCollection title={"Weapon"} items={SuspectCard.getValues()} onPress={(card) => this.selectSuspect(card)}></CardSelectionCollection>
+                    <CardSelectionCollection title={"Weapon"} items={WeaponCard.getValues()} onPress={(card) => this.selectWeapon(card)}></CardSelectionCollection>
                 </View>
                 <View style={STYLES.displayCardContainer}>
-                    <Image style={STYLES.image} source={this.image}></Image>
-                    <Image style={STYLES.image} source={this.image}></Image>
-                    <Image style={STYLES.image} source={this.image}></Image>
+                    <Image style={STYLES.image} source={this.selectedSuspectImage}></Image>
+                    <Image style={STYLES.image} source={this.selectedWeaponImage}></Image>
+                    <Image style={STYLES.image} source={this.selectedWeaponImage}></Image>
                 </View>
                 <View>
                     <FancyButton text={"Confirm"}></FancyButton>
@@ -33,10 +34,16 @@ export default class CardSelectionScreen extends Component<Props, State> {
         )
     }
 
-    private image: ImageURISource = require("../assets/cards/card.png");
+    private selectedSuspectImage: ImageURISource = require("../assets/cards/card.png");
+    private selectedWeaponImage: ImageURISource = require("../assets/cards/card.png");
 
     private selectSuspect(card: Card): void {
-        this.image = card.getImageSource();
+        this.selectedSuspectImage = card.getImageSource();
+        this.setState({});
+    }
+
+    private selectWeapon(card: Card): void {
+        this.selectedWeaponImage = card.getImageSource();
         this.setState({});
     }
 }
