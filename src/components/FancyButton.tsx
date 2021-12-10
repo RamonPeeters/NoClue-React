@@ -4,6 +4,7 @@ import FancyText from './FancyText';
 
 interface Props {
     text: string;
+    onPress(): void;
 }
 
 interface State {}
@@ -11,7 +12,7 @@ interface State {}
 export default class FancyButton extends Component<Props, State> {
     render() {
         return (
-            <Pressable style={[STYLES.button]} onPress={() => console.log("pressed")}>
+            <Pressable style={[STYLES.button]} onPress={() => this.props.onPress()}>
                 <View style={[STYLES.buttonSide, STYLES.buttonTop]}></View>
                 <View style={STYLES.buttonContent}>
                     <FancyText text={this.props.text}></FancyText>
