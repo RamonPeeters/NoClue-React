@@ -9,6 +9,7 @@ import MenuBarComponent from "./MenuBarComponent";
 import CardSelectionScreen from './CardSelectionScreen';
 import Board from "../boards/Board";
 import Screen from "./Screen";
+import RoomCard from "../cards/RoomCard";
 
 interface Props {
     board: Board;
@@ -33,7 +34,7 @@ export default class GameBoardScreen extends Component<Props, State> {
         );
     }
 
-    public enableCardSelectionScreen(roomType: number): void {
+    public enableCardSelectionScreen(roomType: RoomCard): void {
         this.screen.setActiveDisplay(<CardSelectionScreen roomType={roomType} />);
     }
 

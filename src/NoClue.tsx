@@ -10,6 +10,7 @@ import BoardComponent from "./components/BoardComponent";
 import BoardPosition from "./boards/BoardPosition";
 import CardSelectionScreen from "./components/CardSelectionScreen";
 import StartScreen from "./components/StartScreen";
+import RoomCard from "./cards/RoomCard";
 
 export default class NoClue {
     private static instance: NoClue;
@@ -109,12 +110,12 @@ export default class NoClue {
 
     private showCardScreen(reader: Reader): void {
         let roomType: number = reader.readInt();
-        this.gameBoardScreen.enableCardSelectionScreen(roomType);
+        this.gameBoardScreen.enableCardSelectionScreen(RoomCard.byId(roomType));
     }
 
     private readCard(reader: Reader): void {
-        let card: Card = new Card(reader.readInt(), reader.readInt());
-        this.gameBoardScreen.addCard(card);
+        //let card: Card = new Card(reader.readInt(), reader.readInt());
+        //this.gameBoardScreen.addCard(card);
     }
 
     private allowDice(): void {
