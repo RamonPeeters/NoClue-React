@@ -7,6 +7,7 @@ import FancyTitle from "./FancyTitle";
 interface Props {
     title: string;
     items: string[];
+    onPressItem(): void;
 }
 
 interface State {}
@@ -23,7 +24,7 @@ export default class CheckCardItemComponent extends Component<Props, State> {
                     }}
                     renderItem={(pair) => {
                         return (
-                            <CheckComponent name={pair.item}></CheckComponent>
+                            <CheckComponent onPressItem={() => this.props.onPressItem()} name={pair.item}></CheckComponent>
                         );
                     }}
                 />

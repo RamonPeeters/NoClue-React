@@ -4,6 +4,7 @@ import CheckCardCheckbox from "./CheckCardCheckbox";
 
 interface Props {
     name: string;
+    onPressItem(): void;
 }
 
 interface State {}
@@ -16,7 +17,6 @@ export default class CheckComponent extends Component<Props, State> {
                     <Text>{this.props.name}</Text>
                 </View>
                 <FlatList
-                    contentContainerStyle={{}}
                     numColumns={6}
                     data={[1, 2, 3, 4, 5, 6]}
                     keyExtractor={(item, index) => {
@@ -24,7 +24,7 @@ export default class CheckComponent extends Component<Props, State> {
                     }}
                     renderItem={(pair) => {
                         return (
-                            <CheckCardCheckbox></CheckCardCheckbox>
+                            <CheckCardCheckbox onPress={() => this.props.onPressItem()}></CheckCardCheckbox>
                         );
                     }}
                 ></FlatList>
