@@ -5,18 +5,18 @@ import CardType from "./CardType";
 export default class RoomCard extends Card {
     private static readonly ROOMS: RoomCard[] = [];
 
-    public static readonly HALL: RoomCard = new RoomCard(0, require('../assets/cards/rooms/hall.png'));
-    public static readonly LOUNGE: RoomCard = new RoomCard(1, require('../assets/cards/rooms/lounge.png'));
-    public static readonly DINING_ROOM: RoomCard = new RoomCard(2, require('../assets/cards/rooms/dining_room.png'));
-    public static readonly KITCHEN: RoomCard = new RoomCard(3, require('../assets/cards/rooms/kitchen.png'));
-    public static readonly BALLROOM: RoomCard = new RoomCard(4, require('../assets/cards/rooms/ballroom.png'));
-    public static readonly CONSERVATORY: RoomCard = new RoomCard(5, require('../assets/cards/rooms/conservatory.png'));
-    public static readonly BILLIARD_ROOM: RoomCard = new RoomCard(6, require('../assets/cards/rooms/billiard_room.png'));
-    public static readonly LIBRARY: RoomCard = new RoomCard(7, require('../assets/cards/rooms/library.png'));
-    public static readonly STUDY: RoomCard = new RoomCard(8, require('../assets/cards/rooms/study.png'));
+    public static readonly HALL: RoomCard = new RoomCard(0, "Hall", require('../assets/cards/rooms/hall.png'));
+    public static readonly LOUNGE: RoomCard = new RoomCard(1, "Lounge", require('../assets/cards/rooms/lounge.png'));
+    public static readonly DINING_ROOM: RoomCard = new RoomCard(2, "Dining Room", require('../assets/cards/rooms/dining_room.png'));
+    public static readonly KITCHEN: RoomCard = new RoomCard(3, "Kitchen", require('../assets/cards/rooms/kitchen.png'));
+    public static readonly BALLROOM: RoomCard = new RoomCard(4, "Ballroom", require('../assets/cards/rooms/ballroom.png'));
+    public static readonly CONSERVATORY: RoomCard = new RoomCard(5, "Conservatory", require('../assets/cards/rooms/conservatory.png'));
+    public static readonly BILLIARD_ROOM: RoomCard = new RoomCard(6, "Billiard Room", require('../assets/cards/rooms/billiard_room.png'));
+    public static readonly LIBRARY: RoomCard = new RoomCard(7, "Library", require('../assets/cards/rooms/library.png'));
+    public static readonly STUDY: RoomCard = new RoomCard(8, "Study", require('../assets/cards/rooms/study.png'));
 
-    private constructor(value: number, image: ImageURISource) {
-        super(CardType.WEAPON, value, image);
+    private constructor(value: number, name: string, image: ImageURISource) {
+        super(CardType.WEAPON, value, image, name);
         RoomCard.ROOMS.push(this);
     }
 

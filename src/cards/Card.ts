@@ -5,11 +5,13 @@ export default abstract class Card {
     private readonly cardType: CardType;
     private readonly cardValue: number;
     private readonly image: ImageURISource;
+    private readonly name: string;
 
-    protected constructor(cardType: CardType, cardValue: number, image: ImageURISource) {
+    protected constructor(cardType: CardType, cardValue: number, image: ImageURISource, name: string) {
         this.cardType = cardType;
         this.cardValue = cardValue;
         this.image = image;
+        this.name = name;
     }
 
     public getCardType(): CardType {
@@ -22,5 +24,9 @@ export default abstract class Card {
 
     public getImageSource(): ImageURISource {
         return this.image;
+    }
+
+    public getName(): string {
+        return this.name;
     }
 }

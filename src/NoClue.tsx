@@ -4,13 +4,12 @@ import Screen from "./components/Screen";
 import React, { ReactNode } from "react";
 import GameSettingsScreen from "./components/GameSettingsScreen";
 import GameBoardScreen from "./components/GameBoardScreen";
-import Card from "./cards/Card";
 import Board from "./boards/Board";
 import BoardComponent from "./components/BoardComponent";
 import BoardPosition from "./boards/BoardPosition";
-import CardSelectionScreen from "./components/CardSelectionScreen";
 import StartScreen from "./components/StartScreen";
 import RoomCard from "./cards/RoomCard";
+import DetectiveNotes from "./notes/DetectiveNotes";
 
 export default class NoClue {
     private static instance: NoClue;
@@ -20,6 +19,7 @@ export default class NoClue {
     private connectionHandler: Handler = null;
     private playerId: number;
     private boardscreen: BoardComponent;
+    private notes: DetectiveNotes = new DetectiveNotes();
 
     public constructor() {
         NoClue.instance = this;
@@ -55,6 +55,10 @@ export default class NoClue {
         }
 
         this.connectionHandler.sendMessage(new Uint8Array([0, 0, 0, 10, 0, 0, 0, position.getX(), 0, 0, 0, position.getY()]));
+    }
+
+    public getNotes(): DetectiveNotes {
+        return this.notes;
     }
 
     private receiveMessage(reader: Reader) {

@@ -1,30 +1,31 @@
 import React, { Component, ReactNode } from "react";
 import { FlatList, StyleSheet, View } from "react-native";
-import CheckComponent from "./CheckComponent";
-import FancyText from "./FancyText";
-import FancyTitle from "./FancyTitle";
+import Note from "../../notes/Note";
+import NoteSection from "../../notes/NoteSection";
+import NoteRowComponent from "./NoteRowComponent";
+import FancyText from "../FancyText";
 
 interface Props {
     title: string;
-    items: string[];
-    onPressItem(): void;
+    notes: NoteSection;
+    onPressItem(note: Note): void;
 }
 
 interface State {}
 
-export default class CheckCardItemComponent extends Component<Props, State> {
+export default class NoteSectionComponent extends Component<Props, State> {
     public render(): ReactNode {
         return (
             <View style={STYLES.container}>
                 <FancyText size={20} text={this.props.title}></FancyText>
                 <FlatList
-                    data={this.props.items}
+                    data={this.props.notes.getKeys()}
                     keyExtractor={(item, index) => {
                         return index.toString();
                     }}
                     renderItem={(pair) => {
                         return (
-                            <CheckComponent onPressItem={() => this.props.onPressItem()} name={pair.item}></CheckComponent>
+                            <NoteRowComponent onPressItem={(note) => this.props.onPressItem(note)} name={pair.item.getName()} note={this.props.notes.get(pair.item)}></NoteRowComponent>
                         );
                     }}
                 />

@@ -10,7 +10,7 @@ import CardSelectionScreen from './CardSelectionScreen';
 import Board from "../boards/Board";
 import Screen from "./Screen";
 import RoomCard from "../cards/RoomCard";
-import CheckCardComponent from "./CheckCardComponent";
+import DetectiveNotesComponent from "./notes/DetectiveNotesComponent";
 
 interface Props {
     board: Board;
@@ -31,7 +31,7 @@ export default class GameBoardScreen extends Component<Props, State> {
                     <View style={STYLES.boardContainer}>
                         <Screen defaultDisplay={<BoardComponent ref={(board) => NoClue.getInstance().setBoardScreen(board)}></BoardComponent>} ref={(screen) => this.screen = screen} ></Screen>
                     </View>
-                    <CheckCardComponent></CheckCardComponent>
+                    <DetectiveNotesComponent></DetectiveNotesComponent>
                 </View>
                 <CardCollection ref={(cardCollection) => this.cardCollection = cardCollection}></CardCollection>
             </View>

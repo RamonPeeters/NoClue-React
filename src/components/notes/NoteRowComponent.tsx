@@ -1,15 +1,18 @@
 import React, { Component, ReactNode } from "react";
 import { FlatList, StyleSheet, Text, View } from "react-native";
-import CheckCardCheckbox from "./CheckCardCheckbox";
+import Note from "../../notes/Note";
+import NoteRow from "../../notes/NoteRow";
+import NoteComponent from "./NoteComponent";
 
 interface Props {
     name: string;
-    onPressItem(): void;
+    note: NoteRow;
+    onPressItem(note: Note): void;
 }
 
 interface State {}
 
-export default class CheckComponent extends Component<Props, State> {
+export default class NoteRowComponent extends Component<Props, State> {
     public render(): ReactNode {
         return (
             <View style={STYLES.container}>
@@ -17,14 +20,15 @@ export default class CheckComponent extends Component<Props, State> {
                     <Text>{this.props.name}</Text>
                 </View>
                 <FlatList
-                    numColumns={6}
-                    data={[1, 2, 3, 4, 5, 6]}
+                    numColumns={5}
+                    data={[1, 2, 3, 4, 5]}
                     keyExtractor={(item, index) => {
                         return index.toString();
                     }}
                     renderItem={(pair) => {
+                        let note: Note = this.props.note.getOrCreateNote(pair.item);
                         return (
-                            <CheckCardCheckbox onPress={() => this.props.onPressItem()}></CheckCardCheckbox>
+                            <NoteComponent onPress={(note) => this.props.onPressItem(note)} note={note}></NoteComponent>
                         );
                     }}
                 ></FlatList>
