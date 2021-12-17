@@ -14,6 +14,7 @@ interface State {}
 
 export default class NoteRowComponent extends Component<Props, State> {
     public render(): ReactNode {
+        let invalid: boolean = this.props.note.isInvalidated();
         return (
             <View style={STYLES.container}>
                 <View style={STYLES.titleContainer}>
@@ -28,10 +29,15 @@ export default class NoteRowComponent extends Component<Props, State> {
                     renderItem={(pair) => {
                         let note: Note = this.props.note.getOrCreateNote(pair.item);
                         return (
-                            <NoteComponent onPress={(note) => this.props.onPressItem(note)} note={note}></NoteComponent>
+                            <NoteComponent onPress={(note) => this.props.onPressItem(note)} note={note} invalid={invalid}></NoteComponent>
                         );
                     }}
                 ></FlatList>
+                {invalid &&
+                    <View style={STYLES.invalidatedContainer}>
+                        <View style={STYLES.invalidatedLine}></View>
+                    </View>
+                }
             </View>
         );
     }
@@ -47,5 +53,19 @@ const STYLES = StyleSheet.create({
         paddingHorizontal: 10,
         borderColor: "#000000",
         borderWidth: 1
+    },
+    invalidatedContainer: {
+        position: "absolute",
+        top: 0,
+        bottom: 0,
+        left: 0,
+        right: 0,
+        justifyContent: "center",
+        alignItems: "center"
+    },
+    invalidatedLine: {
+        width: "95%",
+        height: 2,
+        backgroundColor: "red"
     }
 });

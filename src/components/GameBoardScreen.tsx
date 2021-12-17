@@ -44,6 +44,7 @@ export default class GameBoardScreen extends Component<Props, State> {
 
     public addCard(card: Card): void {
         this.cardCollection.addCard(card);
+        this.setState({});
     }
 
     private rollDice(): void {

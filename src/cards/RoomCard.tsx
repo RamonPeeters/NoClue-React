@@ -16,7 +16,7 @@ export default class RoomCard extends Card {
     public static readonly STUDY: RoomCard = new RoomCard(8, "Study", require('../assets/cards/rooms/study.png'));
 
     private constructor(value: number, name: string, image: ImageURISource) {
-        super(CardType.WEAPON, value, image, name);
+        super(CardType.ROOM, value, image, name);
         RoomCard.ROOMS.push(this);
     }
 

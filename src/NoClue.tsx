@@ -10,6 +10,10 @@ import BoardPosition from "./boards/BoardPosition";
 import StartScreen from "./components/StartScreen";
 import RoomCard from "./cards/RoomCard";
 import DetectiveNotes from "./notes/DetectiveNotes";
+import CardType from "./cards/CardType";
+import Util from "./Util";
+import Card from "./cards/Card";
+import NoteSection from "./notes/NoteSection";
 
 export default class NoClue {
     private static instance: NoClue;
@@ -118,8 +122,12 @@ export default class NoClue {
     }
 
     private readCard(reader: Reader): void {
-        //let card: Card = new Card(reader.readInt(), reader.readInt());
-        //this.gameBoardScreen.addCard(card);
+        let type: CardType = reader.readInt();
+        let value: number = reader.readInt();
+        let card: Card = Util.getCard(type, value);
+        let section: NoteSection = this.notes.getSectionByCard(card);
+        section.get(card).setInvalidated(true);
+        this.gameBoardScreen.addCard(card);
     }
 
     private allowDice(): void {

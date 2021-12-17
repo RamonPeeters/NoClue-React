@@ -20,4 +20,14 @@ export default class SuspectCard extends Card {
     public static getValues(): Card[] {
         return SuspectCard.SUSPECTS;
     }
+
+    public static byId(id: number): SuspectCard {
+        for (let i: number = 0; i < SuspectCard.SUSPECTS.length; i++) {
+            let card: SuspectCard = SuspectCard.SUSPECTS[i];
+            if (card.getCardValue() == id) {
+                return card;
+            }
+        }
+        throw new Error("Invalid id for suspect card: " + id);
+    }
 }

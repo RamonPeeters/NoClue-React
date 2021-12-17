@@ -20,4 +20,14 @@ export default class WeaponCard extends Card {
     public static getValues(): Card[] {
         return WeaponCard.WEAPONS;
     }
+
+    public static byId(id: number): WeaponCard {
+        for (let i: number = 0; i < WeaponCard.WEAPONS.length; i++) {
+            let card: WeaponCard = WeaponCard.WEAPONS[i];
+            if (card.getCardValue() == id) {
+                return card;
+            }
+        }
+        throw new Error("Invalid id for weapon card: " + id);
+    }
 }
