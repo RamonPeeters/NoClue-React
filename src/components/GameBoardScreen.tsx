@@ -11,6 +11,8 @@ import Board from "../boards/Board";
 import Screen from "./Screen";
 import RoomCard from "../cards/RoomCard";
 import DetectiveNotesComponent from "./notes/DetectiveNotesComponent";
+import DiceSetComponent from "./dice/DiceSetComponent";
+import DiceSet from "../dice/DiceSet";
 
 interface Props {
     board: Board;
@@ -21,15 +23,23 @@ interface State {}
 export default class GameBoardScreen extends Component<Props, State> {
     private screen: Screen;
     private cardCollection: CardCollection;
+    private enabledDice: boolean;
+    private diceSet: DiceSet = new DiceSet(4, 3);
 
     public render(): ReactNode {
         return (
             <View style={STYLES.container}>
                 <MenuBarComponent></MenuBarComponent>
-                <Button onPress={() => this.rollDice()} title="Roll dice"></Button>
                 <View style={STYLES.gameDisplayContainer}>
                     <View style={STYLES.boardContainer}>
-                        <Screen defaultDisplay={<BoardComponent ref={(board) => NoClue.getInstance().setBoardScreen(board)}></BoardComponent>} ref={(screen) => this.screen = screen} ></Screen>
+                        <View style={STYLES.boardScreenContainer}>
+                            <Screen defaultDisplay={<BoardComponent ref={(board) => NoClue.getInstance().setBoardScreen(board)}></BoardComponent>} ref={(screen) => this.screen = screen} ></Screen>
+                        </View>
+                        {this.enabledDice &&
+                            <View style={STYLES.diceOverlay}>
+                                <DiceSetComponent diceSet={this.diceSet} onPress={() => this.rollDice()}></DiceSetComponent>
+                            </View>
+                        }
                     </View>
                     <DetectiveNotesComponent></DetectiveNotesComponent>
                 </View>
@@ -45,6 +55,23 @@ export default class GameBoardScreen extends Component<Props, State> {
     public addCard(card: Card): void {
         this.cardCollection.addCard(card);
         this.setState({});
+    }
+
+    public enableDice(): void {
+        this.enabledDice = true;
+        this.setState({});
+    }
+
+    public disableDice(): void {
+        this.enabledDice = false;
+        this.setState({});
+    }
+
+    public rolledDice(diceSet: DiceSet): void {
+        //this.enabledDice = false;
+        this.diceSet = diceSet;
+        this.setState({});
+        setTimeout(() => this.disableDice(), 3000);
     }
 
     private rollDice(): void {
@@ -63,8 +90,21 @@ const STYLES = StyleSheet.create({
     },
     boardContainer: {
         backgroundColor: "orange",
+        flex: 1
+    },
+    boardScreenContainer: {
         flex: 1,
         alignItems: "center",
         justifyContent: "center"
+    },
+    diceOverlay: {
+        backgroundColor: "#00000040",
+        position: "absolute",
+        left: 0,
+        right: 0,
+        top: 0,
+        bottom: 0,
+        justifyContent: "center",
+        alignItems: "center"
     }
 });

@@ -14,6 +14,7 @@ import CardType from "./cards/CardType";
 import Util from "./Util";
 import Card from "./cards/Card";
 import NoteSection from "./notes/NoteSection";
+import DiceSet from "./dice/DiceSet";
 
 export default class NoClue {
     private static instance: NoClue;
@@ -131,11 +132,13 @@ export default class NoClue {
     }
 
     private allowDice(): void {
-        console.log("Allow dice to be rolled");
+        this.gameBoardScreen.enableDice();
     }
 
     private showDiceRoll(reader: Reader): void {
-        console.log(`First Roll: ${reader.readInt()}, Second Roll: ${reader.readInt()}`);
+        let firstRoll: number = reader.readInt();
+        let secondRoll: number = reader.readInt();
+        this.gameBoardScreen.rolledDice(new DiceSet(firstRoll, secondRoll));
     }
 
     private showSpaces(reader: Reader): void {
