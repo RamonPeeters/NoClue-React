@@ -52,7 +52,7 @@ export default class GameBoardScreen extends Component<Props, State> {
         this.screen.setActiveDisplay(<CardSelectionScreen roomType={roomType} />);
     }
 
-    public enableBoardScreen(): void {
+    public enableDefaultBoardScreen(): void {
         this.screen.setDefaultDisplay();
     }
 

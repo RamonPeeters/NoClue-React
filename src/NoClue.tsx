@@ -121,7 +121,7 @@ export default class NoClue {
     }
     
     private showBoardScreen(): void {
-        this.gameBoardScreen.enableBoardScreen();
+        this.gameBoardScreen.enableDefaultBoardScreen();
     }
 
     private showCardScreen(reader: Reader): void {
