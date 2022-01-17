@@ -29,4 +29,10 @@ export default class Screen extends Component<Props, State> {
             activeDisplay: display
         });
     }
+
+    public setDefaultDisplay(): void {
+        this.setState({
+            activeDisplay: this.props.defaultDisplay
+        });
+    }
 }

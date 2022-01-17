@@ -7,12 +7,12 @@ interface Props {
 }
 
 export default class DieComponent extends Component<Props> {
-    private static readonly ONE: ImageURISource = require('../assets/die/1.png');
-    private static readonly TWO: ImageURISource = require('../assets/die/2.png');
-    private static readonly THREE: ImageURISource = require('../assets/die/3.png');
-    private static readonly FOUR: ImageURISource = require('../assets/die/4.png');
-    private static readonly FIVE: ImageURISource = require('../assets/die/5.png');
-    private static readonly SIX: ImageURISource = require('../assets/die/6.png');
+    private static readonly ONE: ImageURISource = require('../../assets/die/1.png');
+    private static readonly TWO: ImageURISource = require('../../assets/die/2.png');
+    private static readonly THREE: ImageURISource = require('../../assets/die/3.png');
+    private static readonly FOUR: ImageURISource = require('../../assets/die/4.png');
+    private static readonly FIVE: ImageURISource = require('../../assets/die/5.png');
+    private static readonly SIX: ImageURISource = require('../../assets/die/6.png');
 
     public render(): ReactNode {
         return (

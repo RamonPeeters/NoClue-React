@@ -99,6 +99,9 @@ export default class NoClue {
         if (id == 16) {
             this.showCardScreen(reader);
         }
+        if (id == 18) {
+            this.showBoardScreen();
+        }
     }
 
     private lobbyCreated(reader: Reader): void {
@@ -115,6 +118,10 @@ export default class NoClue {
 
     private gameStarted(): void {
         this.screen.setActiveDisplay(<GameBoardScreen board={this.board} ref={(gameBoardScreen => this.gameBoardScreen = gameBoardScreen)} />);
+    }
+    
+    private showBoardScreen(): void {
+        this.gameBoardScreen.enableBoardScreen();
     }
 
     private showCardScreen(reader: Reader): void {
