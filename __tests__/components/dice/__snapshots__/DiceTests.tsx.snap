@@ -1,0 +1,113 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correct image for die value 1 1`] = `
+<Image
+  source={
+    Object {
+      "testUri": "../../../src/assets/die/1.png",
+    }
+  }
+  style={
+    Array [
+      Object {},
+      undefined,
+    ]
+  }
+/>
+`;
+
+exports[`renders correct image for die value 2 1`] = `
+<Image
+  source={
+    Object {
+      "testUri": "../../../src/assets/die/1.png",
+    }
+  }
+  style={
+    Array [
+      Object {},
+      undefined,
+    ]
+  }
+/>
+`;
+
+exports[`renders correct image for die value 3 1`] = `
+<Image
+  source={
+    Object {
+      "testUri": "../../../src/assets/die/2.png",
+    }
+  }
+  style={
+    Array [
+      Object {},
+      undefined,
+    ]
+  }
+/>
+`;
+
+exports[`renders correct image for die value 4 1`] = `
+<Image
+  source={
+    Object {
+      "testUri": "../../../src/assets/die/4.png",
+    }
+  }
+  style={
+    Array [
+      Object {},
+      undefined,
+    ]
+  }
+/>
+`;
+
+exports[`renders correct image for die value 5 1`] = `
+<Image
+  source={
+    Object {
+      "testUri": "../../../src/assets/die/5.png",
+    }
+  }
+  style={
+    Array [
+      Object {},
+      undefined,
+    ]
+  }
+/>
+`;
+
+exports[`renders correct image for die value 6 1`] = `
+<Image
+  source={
+    Object {
+      "testUri": "../../../src/assets/die/6.png",
+    }
+  }
+  style={
+    Array [
+      Object {},
+      undefined,
+    ]
+  }
+/>
+`;
+
+exports[`renders the default image for an invalid die value 1`] = `
+<Image
+  source={
+    Object {
+      "testUri": "../../../src/assets/die/6.png",
+    }
+  }
+  style={
+    Array [
+      Object {},
+      undefined,
+    ]
+  }
+/>
+`;
